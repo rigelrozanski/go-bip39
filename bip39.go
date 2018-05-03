@@ -201,7 +201,7 @@ func padByteSlice(slice []byte, length int) []byte {
 }
 
 func validateEntropyBitSize(bitSize int) error {
-	if (bitSize%32) != 0 || bitSize < 128 || bitSize > 256 {
+	if (bitSize%32) != 0 || bitSize > 256 {
 		return errors.New("Entropy length must be [128, 256] and a multiple of 32")
 	}
 	return nil
@@ -225,7 +225,7 @@ func IsMnemonicValid(mnemonic string) bool {
 	numOfWords := len(words)
 
 	// The number of words should be 12, 15, 18, 21 or 24
-	if numOfWords%3 != 0 || numOfWords < 12 || numOfWords > 24 {
+	if numOfWords%3 != 0 || numOfWords > 24 {
 		return false
 	}
 
